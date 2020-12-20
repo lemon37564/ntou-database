@@ -104,21 +104,22 @@ echo "<table border = '1'>
 
 </tr>";
 
-$query = ("select course_name,prof_name,upvotes from reviews order by upvotes desc limit 10");
+$query = ("
+select department,course_name,upvotes 
+from reviews, professor 
+where reviews.prof_name=professor.prof_name
+group by department
+order by upvotes desc limit 10
+");
 $stmt = $db->prepare($query);
 $stmt->execute();
 $result = $stmt->fetchAll();
 
 for($i=0;$i<count($result);$i++){
 	echo "<tr>";
-	
+	echo "<td>".$result[$i]['department']."</td>";
 	echo "<td>".$result[$i]['course_name']."</td>";
-	echo "<td>".$result[$i]['prof_name']."</td>";
-
 	echo "<td>".$result[$i]['upvotes']."</td>";
-	
-
-	
 	echo "</tr>";
 }
 
