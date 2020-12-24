@@ -76,6 +76,7 @@ tr:nth-child(1){
 <div id='Menu'>
 	<ul>
 	<li><a href='welcome.php'>首頁</a></li>
+	<li><a href='delete.php'>刪除評鑑</a></li>
 	<li><a href='update.php'>修改評鑑</a></li>
 		<li><a href='insert.php'>新增評鑑</a></li>
 		<li><a href='select.php'>查詢評鑑</a></li>
