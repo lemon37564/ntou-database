@@ -89,7 +89,7 @@ tr:nth-child(1){
 	</ul>
 </div>
 
-<form action = "updatevote_4.php" method = "post">
+<form action = "updatevote.php" method = "post">
 請輸入學號:<input type = "text" name = "sID">
 請輸入要按讚的課號:<input type = "text" name = "course_id">
 <input type= "submit" name = "submit" value = "投票">
