@@ -104,7 +104,7 @@ tr:nth-child(1){
 header("Content-type:text/html;charset=utf-8");
 include_once "db_conn.php";
 
-$sID = $_POST["sID"];
+$sID = $_SESSION["username"];
 $query = ("select * from reviews where sID=?");
 $stmt = $db->prepare($query);
 $stmt->execute(array($sID));
