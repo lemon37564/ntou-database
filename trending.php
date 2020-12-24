@@ -74,19 +74,15 @@ tr:nth-child(1){
 <center>
 <body>
 <div id='Menu'>
-	<ul>
-	<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<li><a href='https://www.youtube.com/?gl=TW&hl=zh-TW'>Pornhub</a></li>
-		<div style='clear:both;'></div>
-	</ul>
+ <ul>
+ <li><a href='welcome.php'>首頁</a></li>
+ <li><a href='update.php'>修改評鑑</a></li>
+  <li><a href='insert.php'>新增評鑑</a></li>
+  <li><a href='select.php'>查詢評鑑</a></li>
+  <li><a href='upvote.php'>評鑑投票</a></li>
+  <li><a href='trending.php'>各系熱門課程</a></li>
+  <div style='clear:both;'></div>
+ </ul>
 </div>
 
 
