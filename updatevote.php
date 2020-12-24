@@ -11,5 +11,5 @@ $query = ("update reviews set upvotes = upvotes+1 where sID=? and course_id=?");
 $stmt = $db->prepare($query);
 $stmt->execute(array($sID,$course_id));
 unset($_SESSION['sID']);
-header("Location:upvote_4.php");
+header("Location:upvote.php");
 ?>
