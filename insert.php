@@ -93,7 +93,8 @@ tr:nth-child(1){
 header("Content-type:text/html;charset=utf-8");
 include_once "db_conn.php";
 
-$sID = $_POST["sID"];
+$sID = $_SESSION["sID"];
+
 $course_id = $_POST["course_id"];
 $course_name = $_POST["course_name"];
 $prof_name = $_POST["prof_name"];
