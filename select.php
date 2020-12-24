@@ -75,11 +75,14 @@ tr:nth-child(1){
 <body>
 <div id='Menu'>
 	<ul>
-	<li><a href='/index.php'>主畫面</a></li>
-		<li><a href='https://www.xvideos.com/'>Xvideo</a></li>
-		<li><a href='https://www.xvideos.com/'>Xvideo</a></li>
-		<li><a href='https://www.xvideos.com/'>Xvideo</a></li>
-		<div style='clear:both;'></div>
+	<li><a href='welcome.php'>首頁</a></li>
+	<li><a href='delete.php'>刪除評鑑</a></li>
+	<li><a href='update.php'>修改評鑑</a></li>
+	<li><a href='insert.php'>新增評鑑</a></li>
+	<li><a href='select.php'>查詢評鑑</a></li>
+	<li><a href='upvote.php'>評鑑投票</a></li>
+	<li><a href='trending.php'>各系熱門課程</a></li>
+<div style='clear:both;'></div>
 	</ul>
 </div>
 <table class="lebt"cellpadding = '36'>
@@ -117,18 +120,80 @@ echo "<table border = '1'>
 <th>review_date</th>
 </tr>";
 
-$name = $_POST["course_name"];
-$query = ("SELECT * FROM reviews WHERE course_name=?;");
-$stmt = $db->prepare($query);
-$stmt->execute(array($name));
-$result = $stmt->fetchAll();
- 
-for($i=0;$i<count($result);$i++){
-	echo "<tr>";
-	for($j = 0; $j < 11; $j++) {
-		echo "<td>".$result[$i][$j]."</td>";
+$mode = $_POST["mode"]
+
+if($mode == 1) {
+	// 依課名
+	$name = $_POST["course_name"];
+	$query = ("SELECT * FROM reviews WHERE course_name=?;");
+	$stmt = $db->prepare($query);
+	$stmt->execute(array($name));
+	$result = $stmt->fetchAll();
+	
+	for($i=0;$i<count($result);$i++){
+		echo "<tr>";
+		for($j = 0; $j < 11; $j++) {
+			echo "<td>".$result[$i][$j]."</td>";
+		}
+		echo "</tr>";
 	}
-	echo "</tr>";
+} else if($mode == 2) {
+	// 依教授
+	$name = $_POST["prof_name"];
+	$query = ("SELECT * FROM reviews WHERE prof_name=?;");
+	$stmt = $db->prepare($query);
+	$stmt->execute(array($name));
+	$result = $stmt->fetchAll();
+	
+	for($i=0;$i<count($result);$i++){
+		echo "<tr>";
+		for($j = 0; $j < 11; $j++) {
+			echo "<td>".$result[$i][$j]."</td>";
+		}
+		echo "</tr>";
+	}
+} else if($mode == 3) {
+	// 依評價(由高到低)
+	$query = ("SELECT * FROM reviews ORDER BY rating DESC;");
+	$stmt = $db->prepare($query);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	
+	for($i=0;$i<count($result);$i++){
+		echo "<tr>";
+		for($j = 0; $j < 11; $j++) {
+			echo "<td>".$result[$i][$j]."</td>";
+		}
+		echo "</tr>";
+	}
+} else if($mode == 4) {
+	// 依日期(由新到舊)
+	$query = ("SELECT * FROM reviews ORDER BY review_date DESC;");
+	$stmt = $db->prepare($query);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	
+	for($i=0;$i<count($result);$i++){
+		echo "<tr>";
+		for($j = 0; $j < 11; $j++) {
+			echo "<td>".$result[$i][$j]."</td>";
+		}
+		echo "</tr>";
+	}
+} else if($mode == 5) {
+	// 依按讚數(由多到少)
+	$query = ("SELECT * FROM reviews ORDER BY upvotes DESC;");
+	$stmt = $db->prepare($query);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	
+	for($i=0;$i<count($result);$i++){
+		echo "<tr>";
+		for($j = 0; $j < 11; $j++) {
+			echo "<td>".$result[$i][$j]."</td>";
+		}
+		echo "</tr>";
+	}
 }
 ?>
 </body>

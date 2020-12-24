@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv = 'Content-type' contennt = 'text/html'; charset = 'utf-8'>
 <meta http-equiv = 'Pragma' contennt = 'No-cache'>
-<title>查詢評鑑</title>
+<title>新增評鑑</title>
 <style type ="text/css">
 #Menu {
 	margin:0px;
@@ -75,10 +75,13 @@ tr:nth-child(1){
 <body>
 <div id='Menu'>
 	<ul>
-	<li><a href='/index.php'>主畫面</a></li>
-		<li><a href='https://www.xvideos.com/'>Xvideo</a></li>
-		<li><a href='https://www.xvideos.com/'>Xvideo</a></li>
-		<li><a href='https://www.xvideos.com/'>Xvideo</a></li>
+	<li><a href='welcome.php'>首頁</a></li>
+	<li><a href='delete.php'>刪除評鑑</a></li>
+	<li><a href='update.php'>修改評鑑</a></li>
+	<li><a href='insert.php'>新增評鑑</a></li>
+	<li><a href='select.php'>查詢評鑑</a></li>
+	<li><a href='upvote.php'>評鑑投票</a></li>
+	<li><a href='trending.php'>各系熱門課程</a></li>
 		<div style='clear:both;'></div>
 	</ul>
 </div>
