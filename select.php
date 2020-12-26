@@ -86,115 +86,23 @@ tr:nth-child(1){
 	</ul>
 </div>
 <table class="lebt"cellpadding = '36'>
-<!-- <tr>
-<th>sID</th>
-<th>course_id</th>
-<th>course_name</th>
-<th>prof_name</th>
-<th>rating</th>
-<th>comment</th>
-<th>grading_policy</th>
-<th>takes_attendance</th>
-<th>previous_years_test_question</th>
-<th>upvotes</th>
-<th>review_date</th>
-<th>操作</th>
-</tr> -->
+
 <br><br>
-<?php
-header("Content-type:text/html;charset=utf-8");
-include_once "db_conn.php";
+<h3>
+<form action="select_proc.php" method="post">
+輸入內容<input type="text" name="val" id="val">
+<p><select name="mode" required="required" id="year">
+<option value="" selected disabled>請選擇模式</option>
+                    <option value="1">依課名</option>
+                    <option value="2">依教授名</option>
+                    <option value="3">依評價(由高到低)(不須入內容)</option>
+                    <option value="4">依日期(由新到舊)(不須入內容)</option>
+					<option value="5">依按讚數(由多到少)(不須入內容)</option>
+</select>
 
-echo "<table border = '1'>
-<tr>
-<th>sID</th>
-<th>course_id</th>
-<th>course_name</th>
-<th>prof_name</th>
-<th>rating</th>
-<th>comment</th>
-<th>grading_policy</th>
-<th>takes_attendance</th>
-<th>previous_years_test_question</th>
-<th>upvotes</th>
-<th>review_date</th>
-</tr>";
+<p><input type="submit" value="提交"></p>
 
-$mode = $_POST["mode"]
-
-if($mode == 1) {
-	// 依課名
-	$name = $_POST["course_name"];
-	$query = ("SELECT * FROM reviews WHERE course_name=?;");
-	$stmt = $db->prepare($query);
-	$stmt->execute(array($name));
-	$result = $stmt->fetchAll();
-	
-	for($i=0;$i<count($result);$i++){
-		echo "<tr>";
-		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
-		}
-		echo "</tr>";
-	}
-} else if($mode == 2) {
-	// 依教授
-	$name = $_POST["prof_name"];
-	$query = ("SELECT * FROM reviews WHERE prof_name=?;");
-	$stmt = $db->prepare($query);
-	$stmt->execute(array($name));
-	$result = $stmt->fetchAll();
-	
-	for($i=0;$i<count($result);$i++){
-		echo "<tr>";
-		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
-		}
-		echo "</tr>";
-	}
-} else if($mode == 3) {
-	// 依評價(由高到低)
-	$query = ("SELECT * FROM reviews ORDER BY rating DESC;");
-	$stmt = $db->prepare($query);
-	$stmt->execute();
-	$result = $stmt->fetchAll();
-	
-	for($i=0;$i<count($result);$i++){
-		echo "<tr>";
-		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
-		}
-		echo "</tr>";
-	}
-} else if($mode == 4) {
-	// 依日期(由新到舊)
-	$query = ("SELECT * FROM reviews ORDER BY review_date DESC;");
-	$stmt = $db->prepare($query);
-	$stmt->execute();
-	$result = $stmt->fetchAll();
-	
-	for($i=0;$i<count($result);$i++){
-		echo "<tr>";
-		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
-		}
-		echo "</tr>";
-	}
-} else if($mode == 5) {
-	// 依按讚數(由多到少)
-	$query = ("SELECT * FROM reviews ORDER BY upvotes DESC;");
-	$stmt = $db->prepare($query);
-	$stmt->execute();
-	$result = $stmt->fetchAll();
-	
-	for($i=0;$i<count($result);$i++){
-		echo "<tr>";
-		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
-		}
-		echo "</tr>";
-	}
-}
-?>
+</form>
+</h3>
 </body>
 </html>

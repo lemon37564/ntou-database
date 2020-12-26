@@ -89,20 +89,41 @@ tr:nth-child(1){
 
 <center>
 <body>
+<?php
+header("Content-type:text/html;charset=utf-8");
+include_once "db_conn.php";
 
-<form action="insert_proc.php" method="post"><br><br>
-課號<input type="text" name="course_id"><br><br>
-課名<input type="text" name="course_name"><br><br>
-教授名<input type="text" name="prof_name"><br><br>
-評分<input type="text" name="rating"><br><br>
-評價<input type="text" name="comment"><br><br>
-評分標準<input type="text" name="grading_policy"><br><br>
-是否計算出席成績<input type="text" name="takes_attendance"><br><br>
-是否有考古<input type="text" name="previous_years_test_question"><br><br>
+$sID = $_SESSION["username"];
 
-<p><input type="submit" value="新增"></p>
+$course_id = $_POST["course_id"];
+$course_name = $_POST["course_name"];
+$prof_name = $_POST["prof_name"];
+$rating = $_POST["rating"];
+$comment = $_POST["comment"];
+$grading_policy = $_POST["grading_policy"];
+$takes_attendance = $_POST["takes_attendance"];
+$previous_years_test_question = $_POST["previous_years_test_question"];
 
+// check sID
+//if($sID)
 
+// check prof_name
+try{
+$query = ("INSERT INTO reviews VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+$stmt = $db->prepare($query);
+$stmt->execute(array($sID, $course_id, $course_name, $prof_name, $rating, $comment, $grading_policy, $takes_attendance, $previous_years_test_question, 0, date("Y-m-d")));
+}catch(PDOException $e){
+    echo $e;
+    die();
+}
+
+?>
+
+<h1>新增成功!
+<form action = "index.php" method = "post">
+<input type="submit" value = "回到上一頁">
+</form>
+</h1>
 </body>
 </center>
 </html>
