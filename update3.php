@@ -16,5 +16,5 @@ $query = ("update reviews set course_name=?,prof_name=?,rating=?,comment=?,gradi
 $stmt = $db->prepare($query);
 $stmt->execute(array($course_name2,$prof_name2,$rating2,$comment2,$grading_policy2,$takes_attendance2,$previous_years_test_question2,$sID,$course_id));
 unset($_SESSION['sID']);
-header("Location:inform.php");
+header("Location:update.php");
 ?>
