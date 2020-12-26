@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>註冊系統前端</title>
+        <style type="text/css">
+            #Menu {
+                    margin:0px;
+                    border-bottom:0px #cdcdcd solid;
+                    background-color:#000000;
+                    border:0px #ccc solid;
+                }
+                #Menu ul{
+                    margin:0px;
+                    margin-left:-10px;
+                    padding:0px;
+                }
+                #Menu ul li{
+                    list-style:none;
+                    margin-left:0px;
+                }
+                #Menu ul li a{
+                    text-decoration:none;
+                    font-size:12px;
+                    color:#fff;
+                    padding:3px 18px;
+                    background-color:#000000;
+                    border-bottom:0px solid #ccc;
+                    float:left;
+                    padding:12px;
+                }
+                #Menu ul li a:hover{
+                    display:block;
+                    text-decoration:none;
+                    font-size:16px;
+                    color:black;
+                    padding:8px 8px 8px 8px;
+                    background-color:#fff;
+                    border-top:1px solid #ccc;
+                    border-bottom:0px solid #ccc;
+                }
+                body{
+                    font-size:16px;font-family:"微軟正黑體";
+                    background-image: url('https://i.imgur.com/DVlwQFN.jpg');
+                    background-repeat:no-repeat;
+                    background-color: #30FFFF;
+                    background-position: center;
+                    background-size: cover;
+                }
+
+                table{
+                    width:200px;
+                    border-collapse:collapse;
+                }
+                td{
+                    border-bottom:1px solid #888888;padding:20px;
+                }
+                tr:nth-child(odd){
+                    background-color:#e8e8e8;
+                }
+                tr:nth-child(even){
+                    background-color:#e8e8e8;
+                }
+                tr:nth-child(1){
+                    background-color:#000000;color:#ffffff;
+                }
+                .lebt {
+                    position: absolute;
+                    left: 10px;
+                    Top: 80px;
+                }
+                form{ 
+                    text-align: center; 
+                }
+            form {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="register.php" method="post" name="form_register" onsubmit="return check()">
+            <p>帳號</p>
+            <p><input type="text" name="account" placeholder="你的學號" required="required" id="account"></p>
+            <p>學生名稱</p>
+            <p><input type="text" name="studentName" required="required" id="studentName"></p>
+            <p>年級</p>
+            <p><select name="year" required="required" id="year">
+                    <option value="" selected disabled>請選擇年級</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select></p>
+            <p>密碼</p>
+            <p><input type="password" name="password" required="required" id="password"></p>
+            <p>確認密碼</p>
+            <p><input type="password" name="repeatPassword" required="required" id="repeatPassword"></p>
+            <p><input type="submit" value="註冊"></p>
+        </form>
+        <script type="text/javascript">
+            function check() {
+                var account = document.getElementById("account").value;
+                var password = document.getElementById("password").value;
+                var repeatPassword = document.getElementById("repeatPassword").value;
+                var regex = /^[/s] $/;
+                if (regex.test(account)) {
+                    alert("帳號格式不合法");
+                    return false;
+                }
+                if (account === password) {
+                    alert("帳號與密碼相同");
+                    return false;
+                }
+                if (regex.test(password)) {
+                    alert("密碼格式不合法");
+                    return false;
+                }
+                if (password !== repeatPassword) {
+                    alert("兩次密碼不一致");
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>
+<!--完成-->
