@@ -7,5 +7,5 @@ $course_id = $_GET["course_id"];
 $query = ("delete from reviews where sID=? and course_id=?");
 $stmt = $db->prepare($query);
 $stmt->execute(array($sID,$course_id));
-header("Location:inform.php");
+header("Location:delete.php");
 ?>
