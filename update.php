@@ -132,7 +132,6 @@ for($i=0;$i<count($result);$i++){
 	$grading_policy = $result[$i]['grading_policy'];
 	$takes_attendance = $result[$i]['takes_attendance'];
 	$previous_years_test_question = $result[$i]['previous_years_test_question'];
-   session_start();
    $_SESSION['sID']=$sID;
    $_SESSION['$i']=$course_id;
     echo '<td><a href="update2.php?i='.$i.'">修改</a></td>';
