@@ -88,24 +88,25 @@ tr:nth-child(1){
 <table class="lebt"cellpadding = '36'>
 
 <br><br>
+
+<table border>
+<tr>
+<th nowrap="nowrap">學號</th>
+<th nowrap="nowrap">課號</th>
+<th nowrap="nowrap">課名</th>
+<th nowrap="nowrap">教授姓名</th>
+<th nowrap="nowrap">評分</th>
+<th nowrap="nowrap">評價</th>
+<th nowrap="nowrap">評分標準</th>
+<th nowrap="nowrap">是否計算出席</th>
+<th nowrap="nowrap">是否有考古</th>
+<th nowrap="nowrap">按讚數</th>
+<th nowrap="nowrap">評分日期</th>
+</tr>
+
 <?php
 header("Content-type:text/html;charset=utf-8");
 include_once "db_conn.php";
-
-echo "<table border = '1'>
-<tr>
-<th>sID</th>
-<th>course_id</th>
-<th>course_name</th>
-<th>prof_name</th>
-<th>rating</th>
-<th>comment</th>
-<th>grading_policy</th>
-<th>takes_attendance</th>
-<th>previous_years_test_question</th>
-<th>upvotes</th>
-<th>review_date</th>
-</tr>";
 
 $mode = $_POST["mode"];
 
@@ -120,7 +121,7 @@ if ($mode == "1") {
 	for($i=0;$i<count($result);$i++){
 		echo "<tr>";
 		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
+			echo "<td nowrap=\"nowrap\">".$result[$i][$j]."</td>";
 		}
 		echo "</tr>";
 	}
@@ -135,13 +136,13 @@ if ($mode == "1") {
 	for($i=0;$i<count($result);$i++){
 		echo "<tr>";
 		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
+			echo "<td nowrap=\"nowrap\">".$result[$i][$j]."</td>";
 		}
 		echo "</tr>";
 	}
 } else if($mode == "3") {
 	// 依評價(由高到低)
-	$query = ("SELECT * FROM reviews ORDER BY ‘rating’ DESC;");
+	$query = ("SELECT * FROM reviews ORDER BY rating DESC;");
 	$stmt = $db->prepare($query);
 	$stmt->execute();
 	$result = $stmt->fetchAll();
@@ -149,13 +150,13 @@ if ($mode == "1") {
 	for($i=0;$i<count($result);$i++){
 		echo "<tr>";
 		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
+			echo "<td nowrap=\"nowrap\">".$result[$i][$j]."</td>";
 		}
 		echo "</tr>";
 	}
 } else if($mode == "4") {
 	// 依日期(由新到舊)
-	$query = ("SELECT * FROM reviews ORDER BY ‘review_date’ DESC;");
+	$query = ("SELECT * FROM reviews ORDER BY review_date DESC;");
 	$stmt = $db->prepare($query);
 	$stmt->execute();
 	$result = $stmt->fetchAll();
@@ -163,13 +164,13 @@ if ($mode == "1") {
 	for($i=0;$i<count($result);$i++){
 		echo "<tr>";
 		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
+			echo "<td nowrap=\"nowrap\">".$result[$i][$j]."</td>";
 		}
 		echo "</tr>";
 	}
 } else if($mode == "5") {
 	// 依按讚數(由多到少)
-	$query = ("SELECT * FROM reviews ORDER BY ‘upvotes’ DESC;");
+	$query = ("SELECT * FROM reviews ORDER BY upvotes DESC;");
 	$stmt = $db->prepare($query);
 	$stmt->execute();
 	$result = $stmt->fetchAll();
@@ -177,7 +178,7 @@ if ($mode == "1") {
 	for($i=0;$i<count($result);$i++){
 		echo "<tr>";
 		for($j = 0; $j < 11; $j++) {
-			echo "<td>".$result[$i][$j]."</td>";
+			echo "<td nowrap=\"nowrap\">".$result[$i][$j]."</td>";
 		}
 		echo "</tr>";
 	}

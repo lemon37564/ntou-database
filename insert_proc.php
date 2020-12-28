@@ -93,6 +93,7 @@ tr:nth-child(1){
 header("Content-type:text/html;charset=utf-8");
 include_once "db_conn.php";
 
+session_start();
 $sID = $_SESSION["username"];
 
 $course_id = $_POST["course_id"];
@@ -101,8 +102,22 @@ $prof_name = $_POST["prof_name"];
 $rating = $_POST["rating"];
 $comment = $_POST["comment"];
 $grading_policy = $_POST["grading_policy"];
-$takes_attendance = $_POST["takes_attendance"];
-$previous_years_test_question = $_POST["previous_years_test_question"];
+$temp = $_POST["takes_attendance"];
+$temp2 = $_POST["previous_years_test_question"];
+
+$takes_attendance = 0;
+if($temp == "是") {
+	$takes_attendance = 1;
+} else {
+	$takes_attendance = 0;
+}
+
+$previous_years_test_question = 0;
+if($temp == "是") {
+	$previous_years_test_question = 1;
+} else {
+	$previous_years_test_question = 0;
+}
 
 // check sID
 //if($sID)
@@ -120,7 +135,7 @@ $stmt->execute(array($sID, $course_id, $course_name, $prof_name, $rating, $comme
 ?>
 
 <h1>新增成功!
-<form action = "index.php" method = "post">
+<form action = "welcome.php">
 <input type="submit" value = "回到上一頁">
 </form>
 </h1>

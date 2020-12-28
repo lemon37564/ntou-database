@@ -97,9 +97,16 @@ tr:nth-child(1){
 評分<input type="text" name="rating"><br><br>
 評價<input type="text" name="comment"><br><br>
 評分標準<input type="text" name="grading_policy"><br><br>
-是否計算出席成績<input type="text" name="takes_attendance"><br><br>
-是否有考古<input type="text" name="previous_years_test_question"><br><br>
-
+<select name="takes_attendance" required="required">
+<option value="" selected disabled>是否計算出席成績</option>
+                    <option value="是">是</option>
+                    <option value="否">否</option>
+</select><br><br>
+<select name="previous_years_test_question" required="required">
+<option value="" selected disabled>是否有歷屆考古題</option>
+                    <option value="有">有</option>
+                    <option value="沒有">沒有</option>
+</select><br><br>
 <p><input type="submit" value="新增"></p>
 
 
